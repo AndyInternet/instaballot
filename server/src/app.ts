@@ -1,6 +1,6 @@
 require('dotenv').config();
 require('pretty-error').start();
-import { Request, Response } from 'express';
+import { CustomRequest as Request, CustomResponse as Response } from './types';
 import { HttpError } from 'http-errors';
 import { init } from './init';
 
@@ -8,17 +8,17 @@ import { init } from './init';
 const app = init();
 
 // call to root
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   return res.json({ message: 'SHALL WE PLAY A GAME?' });
 });
 
 // health check endpoint
-app.get('/ping', (req, res) => {
+app.get('/ping', (req: Request, res: Response) => {
   return res.status(200).json({ message: 'service running' });
 });
 
 // catch 404
-app.use(function (req, res) {
+app.use(function (req: Request, res: Response) {
   return res.status(404).json({ message: 'Invalid route (404)' });
 });
 
