@@ -7,7 +7,7 @@ export const fingerprint = async (req: Request, res: Response, next: NextFunctio
   if (!fingerprint) {
     const cookieMaxAge = 7 * 24 * 60 * 60 * 1000;
     fingerprint = v4();
-    res.cookie('fingerprint', JSON.stringify({ fingerprint }), { httpOnly: false, maxAge: cookieMaxAge });
+    res.cookie('fingerprint', JSON.stringify({ fingerprint }), { httpOnly: true, maxAge: cookieMaxAge });
   }
   req.fingerprint = fingerprint;
   next();
