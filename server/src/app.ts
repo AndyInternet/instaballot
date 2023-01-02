@@ -10,7 +10,7 @@ import { createQuestion, index } from './controllers';
 // init express app and global middleware
 const app = init();
 
-// call to root
+// index
 app.get('/', index);
 
 // health check endpoint
