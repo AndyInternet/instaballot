@@ -84,6 +84,7 @@ export const vote = async (req: Request<VoteRequest>, res: Response) => {
           fingerprint: fingerprint,
         });
       }
+      await question.save();
     }
 
     return res.json(question);
