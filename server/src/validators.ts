@@ -1,6 +1,9 @@
 import { JSONSchemaType } from 'ajv';
-import { CreateQuestionRequest } from './types';
+import { CreateQuestionRequest, VoteRequest } from './types';
 
+/**
+ * createQuestionRequestSchema
+ */
 export const createQuestionRequestSchema: JSONSchemaType<CreateQuestionRequest> = {
   type: 'object',
   properties: {
@@ -15,4 +18,20 @@ export const createQuestionRequestSchema: JSONSchemaType<CreateQuestionRequest> 
     },
   },
   required: ['label', 'answers'],
+};
+
+/**
+ * voteRequestSchema
+ */
+export const voteRequestSchema: JSONSchemaType<VoteRequest> = {
+  type: 'object',
+  properties: {
+    questionId: {
+      type: 'string',
+    },
+    answerId: {
+      type: 'string',
+    },
+  },
+  required: ['questionId', 'answerId'],
 };

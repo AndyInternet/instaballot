@@ -1,11 +1,11 @@
 require('dotenv').config();
 require('pretty-error').start();
-import { CreateQuestionRequest, CustomRequest as Request, CustomResponse as Response } from './types';
 import { HttpError } from 'http-errors';
+import { createQuestion, index, vote } from './controllers';
 import { init } from './init';
 import { validate } from './middleware/validate';
-import { createQuestionRequestSchema } from './validators';
-import { createQuestion, index } from './controllers';
+import { CreateQuestionRequest, CustomRequest as Request, CustomResponse as Response, VoteRequest } from './types';
+import { createQuestionRequestSchema, voteRequestSchema } from './validators';
 
 // init express app and global middleware
 const app = init();
@@ -20,6 +20,9 @@ app.get('/ping', (req: Request, res: Response) => {
 
 // create question
 app.post('/question', validate<CreateQuestionRequest>(createQuestionRequestSchema), createQuestion);
+
+// vote
+app.post('/vote', validate<VoteRequest>(voteRequestSchema), vote);
 
 // catch 404
 app.use(function (req: Request, res: Response) {

@@ -10,13 +10,22 @@ export interface CustomResponse extends Response {
   body?: JSON;
 }
 
-export type Answers = Record<string, string>; // id, label
-export type Votes = Record<string, string | null>; // fingerprint, answerId
+export interface Answer {
+  _id?: string;
+  label: string;
+}
+
+export interface Vote {
+  _id?: string;
+  answerId: string;
+  fingerprint: string;
+}
 
 export interface Question {
+  _id?: string;
   label: string;
-  answers: Answers;
-  votes: Votes;
+  answers: Answer[];
+  votes: Vote[];
   access: string[];
 }
 
@@ -25,4 +34,9 @@ export type EmptyRequest = undefined;
 export interface CreateQuestionRequest {
   label: string;
   answers: string[];
+}
+
+export interface VoteRequest {
+  questionId: string;
+  answerId: string;
 }

@@ -1,6 +1,6 @@
 import { NextFunction } from 'express';
-import { CustomRequest as Request, CustomResponse as Response } from '../types';
 import { v4 } from 'uuid';
+import { CustomRequest as Request, CustomResponse as Response } from '../types';
 
 export const fingerprint = async (req: Request, res: Response, next: NextFunction) => {
   const cookieFingerprint = req.cookies?.fingerprint;
