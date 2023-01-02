@@ -4,6 +4,8 @@ export interface ApiQuery<T> {
   payload?: T;
 }
 
+export type NetworkState = 'idle' | 'active';
+
 export type EmptyRequest = undefined;
 
 export type LoadResponse = { message: string };
