@@ -3,9 +3,12 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { json, urlencoded } from 'express';
 import helmet from 'helmet';
+import { connectMongo } from './services/mongo';
 import { fingerprint } from './middleware/fingerprint';
 
 export const init = () => {
+  connectMongo();
+
   const app = express();
 
   // compress responses unless explicitly requested

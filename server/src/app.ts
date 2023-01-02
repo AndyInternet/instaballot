@@ -1,21 +1,25 @@
 require('dotenv').config();
 require('pretty-error').start();
-import { CustomRequest as Request, CustomResponse as Response } from './types';
+import { CreateQuestionRequest, CustomRequest as Request, CustomResponse as Response } from './types';
 import { HttpError } from 'http-errors';
 import { init } from './init';
+import { validate } from './middleware/validate';
+import { createQuestionRequestSchema } from './validators';
+import { createQuestion, index } from './controllers';
 
 // init express app and global middleware
 const app = init();
 
 // call to root
-app.get('/', (req: Request, res: Response) => {
-  return res.json({ message: 'SHALL WE PLAY A GAME?' });
-});
+app.get('/', index);
 
 // health check endpoint
 app.get('/ping', (req: Request, res: Response) => {
   return res.status(200).json({ message: 'service running' });
 });
+
+// create question
+app.post('/question', validate<CreateQuestionRequest>(createQuestionRequestSchema), createQuestion);
 
 // catch 404
 app.use(function (req: Request, res: Response) {
