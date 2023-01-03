@@ -12,7 +12,7 @@ export const activeQuestionIdState = atom<string | null>({
   default: null,
 });
 
-const selectActiveQuestion = selector({
+export const selectActiveQuestion = selector({
   key: 'selectActiveQuestion',
   get: ({ get }) => {
     const questions = get(questionsState);

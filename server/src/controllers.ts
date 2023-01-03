@@ -78,7 +78,7 @@ export const vote = async (req: Request<VoteRequest>, res: Response) => {
       const index = question.votes.findIndex((vote) => vote.fingerprint === fingerprint);
       if (index >= 0) {
         // update if exists
-        question.votes[index].answerId === answerId;
+        question.votes[index].answerId = answerId;
       } else {
         // set if never voted
         question.votes.push({

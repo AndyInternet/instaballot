@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
+import { useNavigate } from 'react-router';
 import { Question } from '../../types/questionTypes';
 
 interface Props {
@@ -14,8 +15,12 @@ interface Props {
 }
 
 export const BallotCard = ({ question }: Props) => {
+  const navigate = useNavigate();
   return (
-    <Card sx={{ marginBottom: '16px' }}>
+    <Card
+      sx={{ marginBottom: '16px' }}
+      onClick={() => navigate(`/ballot/${question._id}`)}
+    >
       <CardActionArea>
         <CardContent>
           <Typography variant='h5' component='div'>

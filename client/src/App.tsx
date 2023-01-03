@@ -1,3 +1,4 @@
+import { Ballot } from './views/Ballot';
 import { Container } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -18,12 +19,16 @@ export const App = () => {
       <DataLoader />
       <IsMobile />
       <ThemeManager>
-        <Container sx={{ paddingTop: '80px', paddingBottom: '80px' }}>
+        <Container
+          maxWidth='md'
+          sx={{ paddingTop: '80px', paddingBottom: '80px' }}
+        >
           <TopBar />
           <Routes>
             <Route index path='/' element={<Ballots />} />
             <Route path='new' element={<NewQuestion />} />
             <Route path='help' element={<Help />} />
+            <Route path='/ballot/:id' element={<Ballot />} />
             <Route path='*' element={<NoMatch />} />
           </Routes>
           <BottomBar />
