@@ -11,8 +11,10 @@ import { NewQuestion } from './views/NewQuestion';
 import { NoMatch } from './views/NoMatch';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getFingerprint } from './utils/getFingerprint';
 
 export const App = () => {
+  getFingerprint();
   return (
     <Router>
       <DataLoader />
