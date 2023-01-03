@@ -12,7 +12,7 @@ export const createQuestionRequestSchema: JSONSchemaType<CreateQuestionRequest> 
     },
     expiresAt: {
       type: 'string',
-      format: 'date',
+      format: 'date-time',
     },
     answers: {
       type: 'array',

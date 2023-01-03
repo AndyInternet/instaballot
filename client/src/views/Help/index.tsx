@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export const Help = () => {
   return (
     <Box>
-      <Typography variant='h1'>Help</Typography>
       <Typography variant='h2'>How it works</Typography>
       <Typography variant='body1'>
         InstaBallot helps you create and answer questions with the help of your

@@ -24,7 +24,12 @@ export const TopBar = () => {
         <Toolbar disableGutters>
           <Grid container justifyContent='space-between' alignItems='center'>
             <Grid item>
-              <Box display='flex' alignItems='center'>
+              <Box
+                display='flex'
+                alignItems='center'
+                onClick={() => navigate('/')}
+                sx={{ cursor: 'pointer' }}
+              >
                 <CheckCircleOutlineIcon />
                 <Typography
                   variant='h6'

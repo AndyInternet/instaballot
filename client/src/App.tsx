@@ -9,6 +9,8 @@ import { Ballots } from './views/Ballots';
 import { Help } from './views/Help';
 import { NewQuestion } from './views/NewQuestion';
 import { NoMatch } from './views/NoMatch';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   return (
@@ -16,7 +18,7 @@ export const App = () => {
       <DataLoader />
       <IsMobile />
       <ThemeManager>
-        <Container sx={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <Container sx={{ paddingTop: '80px', paddingBottom: '80px' }}>
           <TopBar />
           <Routes>
             <Route path='/' element={<Ballots />} />
@@ -27,6 +29,7 @@ export const App = () => {
           <BottomBar />
         </Container>
       </ThemeManager>
+      <ToastContainer position='bottom-left' theme='colored' />
     </Router>
   );
 };
