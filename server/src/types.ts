@@ -23,6 +23,9 @@ export interface Vote {
 
 export interface Question {
   _id?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  expiresAt: Date;
   label: string;
   answers: Answer[];
   votes: Vote[];
@@ -33,6 +36,7 @@ export type EmptyRequest = undefined;
 
 export interface CreateQuestionRequest {
   label: string;
+  expiresAt: string;
   answers: string[];
 }
 

@@ -7,6 +7,7 @@ import {
   EmptyRequest,
   VoteRequest,
 } from './types';
+import dayjs from 'dayjs';
 
 /**
  * index
@@ -34,7 +35,7 @@ export const index = async (req: Request<EmptyRequest>, res: Response) => {
  * @returns
  */
 export const createQuestion = async (req: Request<CreateQuestionRequest>, res: Response) => {
-  const { label, answers } = req.body;
+  const { answers, expiresAt, label } = req.body;
   const { fingerprint } = req;
 
   const formattedAnswers: Answer[] = answers.map((label) => {
@@ -46,6 +47,7 @@ export const createQuestion = async (req: Request<CreateQuestionRequest>, res: R
   try {
     const question = new Question({
       label: label,
+      expiresAt: dayjs(expiresAt).toDate(),
       answers: formattedAnswers,
       votes: [],
       access: [fingerprint],

@@ -10,6 +10,10 @@ export const createQuestionRequestSchema: JSONSchemaType<CreateQuestionRequest> 
     label: {
       type: 'string',
     },
+    expiresAt: {
+      type: 'string',
+      format: 'date',
+    },
     answers: {
       type: 'array',
       items: {

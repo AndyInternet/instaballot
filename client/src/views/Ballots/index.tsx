@@ -1,3 +1,3 @@
 export const Ballots = () => {
-  return <span>not implemented</span>;
+  return <span>not implemented (Ballots)</span>;
 };

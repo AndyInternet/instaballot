@@ -19,7 +19,7 @@ export const TopBar = () => {
   const isMobile = useRecoilValue(isMobileState);
 
   return (
-    <AppBar position='static'>
+    <AppBar position='fixed'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <Grid container justifyContent='space-between' alignItems='center'>
@@ -49,13 +49,13 @@ export const TopBar = () => {
                     Ballots
                   </Button>
                   <Button
-                    onClick={() => navigate('/New')}
+                    onClick={() => navigate('/new')}
                     startIcon={<AddCircleOutlineIcon />}
                   >
                     New
                   </Button>
                   <Button
-                    onClick={() => navigate('/Help')}
+                    onClick={() => navigate('/help')}
                     startIcon={<HelpOutlineIcon />}
                   >
                     Help

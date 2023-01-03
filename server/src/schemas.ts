@@ -10,6 +10,10 @@ export const questionSchema = new Schema<Question>(
       type: String,
       required: true,
     },
+    expiresAt: {
+      type: Date,
+      required: true,
+    },
     answers: [
       {
         label: { type: String, required: true },

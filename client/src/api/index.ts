@@ -1,6 +1,20 @@
-import { ApiQuery, EmptyRequest } from '../types/apiTypes';
+import {
+  ApiQuery,
+  CreateQuestionRequest,
+  EmptyRequest,
+} from '../types/apiTypes';
 
-export const load: ApiQuery<EmptyRequest> = {
+export const fetchAll: ApiQuery<EmptyRequest> = {
   action: 'GET',
   endpoint: '/',
+};
+
+export const createQuestionRequest = (
+  payload: CreateQuestionRequest,
+): ApiQuery<CreateQuestionRequest> => {
+  return {
+    action: 'POST',
+    endpoint: '/question',
+    payload: payload,
+  };
 };

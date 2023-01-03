@@ -1,36 +1,32 @@
-import { Help } from '@mui/icons-material';
 import { Container } from '@mui/material';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Init } from './helpers/Init';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { DataLoader } from './helpers/DataLoader';
 import { IsMobile } from './helpers/IsMobile';
 import { ThemeManager } from './helpers/ThemeManager';
 import BottomBar from './layout/BottomBar';
 import { TopBar } from './layout/TopBar';
 import { Ballots } from './views/Ballots';
+import { Help } from './views/Help';
 import { NewQuestion } from './views/NewQuestion';
 import { NoMatch } from './views/NoMatch';
 
 export const App = () => {
   return (
     <Router>
-      <>
-        <Init />
-        <IsMobile />
-        <ThemeManager>
-          <Container>
-            <TopBar />
-            <Routes>
-              <Route path='/' element={<Ballots />}>
-                <Route index element={<Ballots />} />
-                <Route path='new' element={<NewQuestion />} />
-                <Route path='help' element={<Help />} />
-                <Route path='*' element={<NoMatch />} />
-              </Route>
-            </Routes>
-            <BottomBar />
-          </Container>
-        </ThemeManager>
-      </>
+      <DataLoader />
+      <IsMobile />
+      <ThemeManager>
+        <Container sx={{ paddingTop: '64px', paddingBottom: '64px' }}>
+          <TopBar />
+          <Routes>
+            <Route path='/' element={<Ballots />} />
+            <Route path='new' element={<NewQuestion />} />
+            <Route path='help' element={<Help />} />
+            <Route path='*' element={<NoMatch />} />
+          </Routes>
+          <BottomBar />
+        </Container>
+      </ThemeManager>
     </Router>
   );
 };
