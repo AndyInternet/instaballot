@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { Question } from './models';
 import {
   Answer,
@@ -7,7 +8,6 @@ import {
   EmptyRequest,
   VoteRequest,
 } from './types';
-import dayjs from 'dayjs';
 
 /**
  * index

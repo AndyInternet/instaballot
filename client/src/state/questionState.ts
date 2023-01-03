@@ -1,5 +1,4 @@
 import { atom, selector } from 'recoil';
-import { NetworkState } from '../types/apiTypes';
 import { Question } from '../types/questionTypes';
 
 export const questionsState = atom<Question[]>({

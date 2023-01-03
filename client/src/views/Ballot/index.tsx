@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   activeQuestionIdState,
-  questionsState,
   selectActiveQuestion,
 } from '../../state/questionState';
 import { getFingerprint } from '../../utils/getFingerprint';

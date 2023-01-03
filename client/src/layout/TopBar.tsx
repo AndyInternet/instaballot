@@ -1,3 +1,8 @@
+import {
+  AddCircleOutline as AddCircleOutlineIcon,
+  CheckCircleOutline as CheckCircleOutlineIcon,
+  HelpOutline as HelpOutlineIcon,
+} from '@mui/icons-material';
 import { Grid } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -6,11 +11,6 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router';
-import {
-  AddCircleOutline as AddCircleOutlineIcon,
-  CheckCircleOutline as CheckCircleOutlineIcon,
-  HelpOutline as HelpOutlineIcon,
-} from '@mui/icons-material';
 import { useRecoilValue } from 'recoil';
 import { isMobileState } from '../state/uiState';
 

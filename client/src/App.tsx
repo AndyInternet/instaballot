@@ -1,4 +1,3 @@
-import { Ballot } from './views/Ballot';
 import { Container } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -8,6 +7,7 @@ import { IsMobile } from './helpers/IsMobile';
 import { ThemeManager } from './helpers/ThemeManager';
 import BottomBar from './layout/BottomBar';
 import { TopBar } from './layout/TopBar';
+import { Ballot } from './views/Ballot';
 import { Ballots } from './views/Ballots';
 import { Help } from './views/Help';
 import { NewQuestion } from './views/NewQuestion';
