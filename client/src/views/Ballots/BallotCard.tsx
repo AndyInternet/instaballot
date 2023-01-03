@@ -3,11 +3,11 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  Divider,
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router';
+import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 import { Question } from '../../types/questionTypes';
 
 interface Props {
@@ -31,7 +31,7 @@ export const BallotCard = ({ question }: Props) => {
               {answer.label}
             </Typography>
           ))}
-          <Divider sx={{ margin: '16px auto' }} />
+          <InstaBallotDivider />
           <Box display='flex' justifyContent='space-between'>
             <Typography variant='subtitle2' sx={{ textAlign: 'right' }}>
               Created {dayjs(question.createdAt).fromNow()}

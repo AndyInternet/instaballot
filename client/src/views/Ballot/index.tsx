@@ -2,6 +2,7 @@ import { Box, Divider, List, Typography } from '@mui/material';
 import { useLayoutEffect } from 'react';
 import { useParams } from 'react-router';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 import {
   activeQuestionIdState,
   selectActiveQuestion,
@@ -13,7 +14,6 @@ export const Ballot = () => {
   const { id } = useParams();
   const setActiveQuestionId = useSetRecoilState(activeQuestionIdState);
   const activeQuestion = useRecoilValue(selectActiveQuestion);
-  console.log(activeQuestion);
   const fingerprint = getFingerprint();
   const activeVote =
     activeQuestion?.votes.find((vote) => vote.fingerprint === fingerprint) ??
@@ -28,12 +28,14 @@ export const Ballot = () => {
   return (
     <Box>
       <Typography variant='h5'>{activeQuestion.label}</Typography>
-      <Divider sx={{ margin: '16px auto' }} />
+      <InstaBallotDivider />
+      <InstaBallotDivider />
       <List>
         {activeQuestion.answers.map((answer) => (
           <VoteButton
             answer={answer}
             activeVote={activeVote}
+            votes={activeQuestion.votes}
             key={answer._id}
           />
         ))}

@@ -19,6 +19,9 @@ export const ThemeManager = ({ children }: Props) => {
       createTheme({
         palette: {
           mode: prefersDarkMode ? 'dark' : 'light',
+          primary: {
+            main: '#038C5A',
+          },
         },
       }),
     [prefersDarkMode],

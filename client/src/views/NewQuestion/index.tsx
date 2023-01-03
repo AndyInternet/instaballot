@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { createQuestionRequest } from '../../api';
+import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 import { useAxios } from '../../hooks/useAxios';
 import {
   activeQuestionIdState,
@@ -38,6 +39,14 @@ export const NewQuestion = () => {
   useEffect(() => {
     setVisibleAnswers(answers.slice(0, numberOfAnswers));
   }, [answers, numberOfAnswers]);
+
+  const handleReset = () => {
+    setQuestion('');
+    setNumberOfAnswers(2);
+    setExpiresAt(dayjs().add(1, 'day'));
+    setAnswers(Array(10).fill(''));
+    setVisibleAnswers([]);
+  };
 
   const handleNumberOfAnswersChange = (
     event: Event,
@@ -103,7 +112,7 @@ export const NewQuestion = () => {
         value={question}
         onChange={handleQuestionChange}
       />
-      <Divider sx={{ margin: '16px auto' }} />
+      <InstaBallotDivider />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateTimePicker
           label='Voting Expires At'
@@ -113,7 +122,7 @@ export const NewQuestion = () => {
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>
-      <Divider sx={{ margin: '16px auto' }} />
+      <InstaBallotDivider />
       <Typography variant='body2'>
         Number of Answers: {numberOfAnswers}
       </Typography>
@@ -127,7 +136,7 @@ export const NewQuestion = () => {
         min={2}
         max={10}
       />
-      <Divider sx={{ margin: '16px auto' }} />
+      <InstaBallotDivider />
       {visibleAnswers.map((answer, index) => (
         <TextField
           id={`answer-input-${index}`}
@@ -136,27 +145,23 @@ export const NewQuestion = () => {
           value={answer}
           onChange={(event) => handleAnswerChange(index, event.target.value)}
           sx={{ marginBottom: '16px' }}
+          key={index}
         />
       ))}
-      <Divider sx={{ margin: '16px auto' }} />
+      <InstaBallotDivider />
       <Grid container sx={{ marginTop: '16px' }}>
         <Grid item xs={6} sx={{ paddingRight: '8px' }}>
           <Button
             fullWidth
             variant='outlined'
-            onClick={() => {}}
+            onClick={handleReset}
             sx={{ marginRight: '8px' }}
           >
             Reset
           </Button>
         </Grid>
         <Grid item xs={6} sx={{ paddingLeft: '8px' }}>
-          <Button
-            fullWidth
-            variant='contained'
-            color='secondary'
-            onClick={handleSubmit}
-          >
+          <Button fullWidth variant='contained' onClick={handleSubmit}>
             Save
           </Button>
         </Grid>
