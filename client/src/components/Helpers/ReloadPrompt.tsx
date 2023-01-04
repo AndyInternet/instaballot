@@ -50,8 +50,10 @@ export const ReloadPrompt = () => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Close</Button>
-        <Button autoFocus onClick={() => updateServiceWorker(true)}>
+        <Button variant='outlined' onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant='contained' onClick={() => updateServiceWorker(true)}>
           Reload
         </Button>
       </DialogActions>
