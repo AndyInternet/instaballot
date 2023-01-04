@@ -1,10 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 
 export const Help = () => {
   return (
     <Box>
-      <Typography variant='h2'>How it works</Typography>
+      <Typography variant='h3'>How it works</Typography>
+      <InstaBallotDivider />
       <Typography variant='body1'>
         InstaBallot helps you create and answer questions with the help of your
         social circle.
@@ -14,19 +16,24 @@ export const Help = () => {
       </Typography>
       <ol>
         <li>
-          select <Link to='/new'>New Ballot</Link> from the menu or the top of
-          the home page
+          Select{' '}
+          <Link style={{ color: '#038C5A' }} to='/new'>
+            New
+          </Link>{' '}
+          from the menu.
         </li>
         <li>Ask your ballot question.</li>
-        <li>Create as many answers as you like.</li>
-        <li>Share the link with anyone you want to add choices or vote.</li>
+        <li>Create up to 10 answers.</li>
+        <li>Share the link with anyone you want to vote.</li>
       </ol>
       <Typography variant='body1'>
         You can share the link with as many people as you like. Any open choices
         will be filled by the first to respond and anyone with a link can vote.
         Results happen in realtime on your screen.
       </Typography>
-      <Typography variant='h2'>FAQ</Typography>
+      <Box sx={{ margin: '32px' }} />
+      <Typography variant='h3'>FAQ</Typography>
+      <InstaBallotDivider />
       <Typography variant='body1'>
         <strong>Do I need an account?</strong>
         <br />
@@ -34,18 +41,21 @@ export const Help = () => {
         browser will remember your ballots, choices and votes. Remember, if you
         clear your browser cache, your history will be lost.
       </Typography>
+      <Box sx={{ margin: '16px' }} />
       <Typography variant='body1'>
         <strong>Why are there ballots on my list that I didn't post?</strong>
         <br />
         Your list is made up of any active ballots that you created, wrote in a
         choice or voted on.
       </Typography>
+      <Box sx={{ margin: '16px' }} />
       <Typography variant='body1'>
         <strong>How long do ballots last?</strong>
         <br />
         Ballots are automatically removed from the system after 24 hours so grab
         screenshots if you want to keep your results.
       </Typography>
+      <Box sx={{ margin: '16px' }} />
       <Typography variant='body1'>
         <strong>Is there a limit to how many people can vote?</strong>
         <br />
