@@ -1,7 +1,7 @@
 require('dotenv').config();
 require('pretty-error').start();
 import { HttpError } from 'http-errors';
-import { createQuestion, index, socketConnection, vote } from './controllers';
+import { createQuestion, index, readQuestion, socketConnection, vote } from './controllers';
 import { init } from './init';
 import { validate } from './middleware/validate';
 import { CreateQuestionRequest, CustomRequest as Request, CustomResponse as Response, VoteRequest } from './types';
@@ -13,13 +13,16 @@ import { Server } from 'socket.io';
 // init express app and global middleware
 const app = init();
 
-// index
-app.get('/', index);
-
 // health check endpoint
 app.get('/ping', (req: Request, res: Response) => {
   return res.status(200).json({ message: 'service running' });
 });
+
+// read all questions for fingerprint
+app.get('/', index);
+
+// read question and add fingerprint to question access array
+app.get('/question/:id', readQuestion);
 
 // create question
 app.post('/question', validate<CreateQuestionRequest>(createQuestionRequestSchema), createQuestion);

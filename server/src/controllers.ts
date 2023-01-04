@@ -32,6 +32,28 @@ export const index = async (req: Request<EmptyRequest>, res: Response) => {
 };
 
 /**
+ * readQuestion
+ *
+ * @param req
+ * @param res
+ * @returns
+ */
+export const readQuestion = async (req: Request<EmptyRequest>, res: Response) => {
+  const { fingerprint } = req;
+  const { id } = req.params;
+  try {
+    const question = await Question.findById(id);
+    if (question) {
+      if (fingerprint) question.access.push(fingerprint);
+      await question.save();
+    }
+    return res.json(question);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+/**
  * createQuestion
  *
  * @param req

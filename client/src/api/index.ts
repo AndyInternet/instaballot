@@ -10,6 +10,13 @@ export const fetchAll: ApiQuery<EmptyRequest> = {
   endpoint: '/',
 };
 
+export const readQuestion = (id: string): ApiQuery<EmptyRequest> => {
+  return {
+    action: 'GET',
+    endpoint: `/question/${id}`,
+  };
+};
+
 export const createQuestionRequest = (
   payload: CreateQuestionRequest,
 ): ApiQuery<CreateQuestionRequest> => {
