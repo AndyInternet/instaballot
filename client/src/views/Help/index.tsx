@@ -27,9 +27,8 @@ export const Help = () => {
         <li>Share the link with anyone you want to vote.</li>
       </ol>
       <Typography variant='body1'>
-        You can share the link with as many people as you like. Any open choices
-        will be filled by the first to respond and anyone with a link can vote.
-        Results happen in realtime on your screen.
+        You can share the link with as many people as you like and anyone with
+        the link can vote. Results happen in realtime on your screen.
       </Typography>
       <Box sx={{ margin: '32px' }} />
       <Typography variant='h3'>FAQ</Typography>
@@ -45,15 +44,14 @@ export const Help = () => {
       <Typography variant='body1'>
         <strong>Why are there ballots on my list that I didn't post?</strong>
         <br />
-        Your list is made up of any active ballots that you created, wrote in a
-        choice or voted on.
+        Your list is made up of any active ballots that you created or voted on.
       </Typography>
       <Box sx={{ margin: '16px' }} />
       <Typography variant='body1'>
         <strong>How long do ballots last?</strong>
         <br />
-        Ballots are automatically removed from the system after 24 hours so grab
-        screenshots if you want to keep your results.
+        Ballots are automatically removed from the system after they expire so
+        grab screenshots if you want to keep your results.
       </Typography>
       <Box sx={{ margin: '16px' }} />
       <Typography variant='body1'>
