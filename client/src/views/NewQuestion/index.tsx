@@ -118,7 +118,7 @@ export const NewQuestion = () => {
           value={expiresAt}
           onChange={handleExpiresAtChange}
           minDateTime={dayjs()}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <TextField fullWidth {...params} />}
         />
       </LocalizationProvider>
       <InstaBallotDivider />
