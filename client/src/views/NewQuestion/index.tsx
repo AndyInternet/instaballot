@@ -125,16 +125,18 @@ export const NewQuestion = () => {
       <Typography variant='body2'>
         Number of Answers: {numberOfAnswers}
       </Typography>
-      <Slider
-        aria-label='Number of answers'
-        value={numberOfAnswers}
-        onChange={handleNumberOfAnswersChange}
-        valueLabelDisplay='auto'
-        step={1}
-        marks
-        min={2}
-        max={10}
-      />
+      <Box sx={{ padding: '0 16px' }}>
+        <Slider
+          aria-label='Number of answers'
+          value={numberOfAnswers}
+          onChange={handleNumberOfAnswersChange}
+          valueLabelDisplay='auto'
+          step={1}
+          marks
+          min={2}
+          max={10}
+        />
+      </Box>
       <InstaBallotDivider />
       {visibleAnswers.map((answer, index) => (
         <TextField
