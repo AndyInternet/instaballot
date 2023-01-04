@@ -131,7 +131,7 @@ export const vote = async (req: Request<VoteRequest>, res: Response) => {
 };
 
 export const socketConnection = (socket: Socket) => {
-  const fingerprint = socket.handshake.headers.cookie?.split('=')?.[1];
+  const fingerprint = socket.handshake.query.fingerprint;
   if (fingerprint) {
     socket.join(fingerprint);
   }

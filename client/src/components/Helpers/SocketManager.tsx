@@ -5,19 +5,21 @@ import { fingerprintState } from '../../state/fingerprintState';
 import { questionsState } from '../../state/questionState';
 import { Question } from '../../types/questionTypes';
 
-const baseUrl = import.meta.env.VITE_SERVER_URL || '';
-const socket = io(baseUrl, {
-  withCredentials: true,
-  autoConnect: false,
-});
 export const SocketManager = () => {
   const setQuestions = useSetRecoilState(questionsState);
   const fingerprint = useRecoilValue(fingerprintState);
-  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     if (fingerprint) {
-      socket.connect();
+      const baseUrl = import.meta.env.VITE_SERVER_URL || '';
+      const socket = io(baseUrl, {
+        withCredentials: true,
+        autoConnect: true,
+        query: {
+          fingerprint: fingerprint,
+        },
+      });
       socket.on('connect', () => {
         setIsConnected(true);
       });

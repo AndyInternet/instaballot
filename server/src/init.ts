@@ -1,5 +1,4 @@
 import compression from 'compression';
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { json, urlencoded } from 'express';
 import helmet from 'helmet';
@@ -41,9 +40,6 @@ export const init = () => {
       credentials: true,
     }),
   );
-
-  // read cookies
-  app.use(cookieParser());
 
   // header security
   app.use(helmet());

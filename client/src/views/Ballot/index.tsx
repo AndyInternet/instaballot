@@ -17,13 +17,13 @@ import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 import { useAxios } from '../../hooks/useAxios';
 import { useShare } from '../../hooks/useShare';
 import { networkState } from '../../state/apiState';
+import { fingerprintState } from '../../state/fingerprintState';
 import {
   activeQuestionIdState,
   questionsState,
   selectActiveQuestion,
 } from '../../state/questionState';
 import { EmptyRequest, QuestionResponse } from '../../types/apiTypes';
-import { getFingerprint } from '../../utils/getFingerprint';
 import { VoteButton } from './VoteButton';
 
 export const Ballot = () => {
@@ -34,7 +34,7 @@ export const Ballot = () => {
   const setActiveQuestionId = useSetRecoilState(activeQuestionIdState);
   const network = useRecoilValue(networkState);
   const activeQuestion = useRecoilValue(selectActiveQuestion);
-  const fingerprint = getFingerprint();
+  const fingerprint = useRecoilValue(fingerprintState);
   const activeVote =
     activeQuestion?.votes.find((vote) => vote.fingerprint === fingerprint) ??
     null;
