@@ -9,8 +9,8 @@ export const useShare = () => {
           text: questionString,
           url: window.location.href,
         })
-        .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing:', error));
+        .then(() => console.info('Successful share'))
+        .catch((error) => console.error('Error sharing:', error));
     } else {
       navigator.clipboard.writeText(window.location.href).then(
         () => {

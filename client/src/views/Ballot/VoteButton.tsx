@@ -2,13 +2,7 @@ import {
   CheckCircleOutline as CheckCircleOutlineIcon,
   PanoramaFishEye as PanoramaFishEyeIcon,
 } from '@mui/icons-material';
-import {
-  Box,
-  Grid,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
+import { Box, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRecoilValue, useSetRecoilState } from 'recoil';

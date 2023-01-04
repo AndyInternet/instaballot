@@ -1,7 +1,5 @@
-import cookieParser from 'cookie-parser';
 import dayjs from 'dayjs';
 import { Socket } from 'socket.io';
-import { io } from './app';
 import { Question } from './models';
 import { broadcastQuestionUpdate } from './services/broadcast';
 import {

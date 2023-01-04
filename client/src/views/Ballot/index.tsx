@@ -1,3 +1,4 @@
+import { Share as ShareIcon } from '@mui/icons-material';
 import {
   Avatar,
   Box,
@@ -14,6 +15,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { readQuestion } from '../../api';
 import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 import { useAxios } from '../../hooks/useAxios';
+import { useShare } from '../../hooks/useShare';
+import { networkState } from '../../state/apiState';
 import {
   activeQuestionIdState,
   questionsState,
@@ -22,9 +25,6 @@ import {
 import { EmptyRequest, QuestionResponse } from '../../types/apiTypes';
 import { getFingerprint } from '../../utils/getFingerprint';
 import { VoteButton } from './VoteButton';
-import { Share as ShareIcon } from '@mui/icons-material';
-import { useShare } from '../../hooks/useShare';
-import { networkState } from '../../state/apiState';
 
 export const Ballot = () => {
   const { id } = useParams();

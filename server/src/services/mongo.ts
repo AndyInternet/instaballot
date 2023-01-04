@@ -15,6 +15,6 @@ export const connectMongo = () => {
   mongoose
     .set('strictQuery', false)
     .connect(uri, options)
-    .then((conn) => console.log(`  [mongo]: ${conn.connection.host}:${conn.connection.port}/${conn.connection.name}`))
+    .then((conn) => console.info(`  [mongo]: ${conn.connection.host}:${conn.connection.port}/${conn.connection.name}`))
     .catch((err) => console.error(err.reason));
 };

@@ -1,11 +1,7 @@
 import { Container } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helpers } from './components/Helpers';
-import { DataLoader } from './components/Helpers/DataLoader';
-import { IsMobile } from './components/Helpers/IsMobile';
-import { SocketManager } from './components/Helpers/SocketManager';
 import { ThemeManager } from './components/Helpers/ThemeManager';
 import BottomBar from './layout/BottomBar';
 import { TopBar } from './layout/TopBar';
