@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { useCallback } from 'react';
 import { toast } from 'react-toastify';
-import { useRecoilSnapshot, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { networkState } from '../state/apiState';
 import { fingerprintState } from '../state/fingerprintState';
 import { ApiQuery } from '../types/apiTypes';
