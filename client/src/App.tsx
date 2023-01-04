@@ -2,9 +2,11 @@ import { Container } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { DataLoader } from './helpers/DataLoader';
-import { IsMobile } from './helpers/IsMobile';
-import { ThemeManager } from './helpers/ThemeManager';
+import { Helpers } from './components/Helpers';
+import { DataLoader } from './components/Helpers/DataLoader';
+import { IsMobile } from './components/Helpers/IsMobile';
+import { SocketManager } from './components/Helpers/SocketManager';
+import { ThemeManager } from './components/Helpers/ThemeManager';
 import BottomBar from './layout/BottomBar';
 import { TopBar } from './layout/TopBar';
 import { Ballot } from './views/Ballot';
@@ -16,8 +18,7 @@ import { NoMatch } from './views/NoMatch';
 export const App = () => {
   return (
     <Router>
-      <DataLoader />
-      <IsMobile />
+      <Helpers />
       <ThemeManager>
         <Container
           maxWidth='md'
@@ -34,7 +35,6 @@ export const App = () => {
           <BottomBar />
         </Container>
       </ThemeManager>
-      <ToastContainer position='bottom-left' theme='colored' />
     </Router>
   );
 };

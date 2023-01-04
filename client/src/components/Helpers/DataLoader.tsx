@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { useSetRecoilState } from 'recoil';
-import { fetchAll } from '../api';
-import { useAxios } from '../hooks/useAxios';
-import { questionsState } from '../state/questionState';
-import { EmptyRequest, QuestionsResponse } from '../types/apiTypes';
+import { fetchAll } from '../../api';
+import { useAxios } from '../../hooks/useAxios';
+import { questionsState } from '../../state/questionState';
+import { EmptyRequest, QuestionsResponse } from '../../types/apiTypes';
 
 export const DataLoader = () => {
   const client = useAxios();

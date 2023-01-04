@@ -1,5 +1,9 @@
+import cookieParser from 'cookie-parser';
 import dayjs from 'dayjs';
+import { Socket } from 'socket.io';
+import { io } from './app';
 import { Question } from './models';
+import { broadcastQuestionUpdate } from './services/broadcast';
 import {
   Answer,
   CreateQuestionRequest,
@@ -87,10 +91,18 @@ export const vote = async (req: Request<VoteRequest>, res: Response) => {
         });
       }
       await question.save();
+      broadcastQuestionUpdate(question);
     }
 
     return res.json(question);
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const socketConnection = (socket: Socket) => {
+  const fingerprint = socket.handshake.headers.cookie?.split('=')?.[1];
+  if (fingerprint) {
+    socket.join(fingerprint);
   }
 };

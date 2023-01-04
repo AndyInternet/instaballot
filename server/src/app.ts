@@ -1,11 +1,14 @@
 require('dotenv').config();
 require('pretty-error').start();
 import { HttpError } from 'http-errors';
-import { createQuestion, index, vote } from './controllers';
+import { createQuestion, index, socketConnection, vote } from './controllers';
 import { init } from './init';
 import { validate } from './middleware/validate';
 import { CreateQuestionRequest, CustomRequest as Request, CustomResponse as Response, VoteRequest } from './types';
 import { createQuestionRequestSchema, voteRequestSchema } from './validators';
+
+import http from 'http';
+import { Server } from 'socket.io';
 
 // init express app and global middleware
 const app = init();
@@ -40,4 +43,16 @@ app.use(function (err: HttpError, req: Request, res: Response) {
   res.json({ message: err.message || 'internal server error' });
 });
 
-export default app;
+// socket io
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: process.env.CLIENT_HOSTNAME || '',
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+});
+
+io.on('connection', socketConnection);
+
+export { io, server };

@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@mui/material';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { isMobileState } from '../state/uiState';
+import { isMobileState } from '../../state/uiState';
 
 export const IsMobile = () => {
   const [isMobile, setIsMobile] = useRecoilState(isMobileState);

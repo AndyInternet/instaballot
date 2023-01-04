@@ -1,4 +1,4 @@
-import { Box, Divider, List, Typography } from '@mui/material';
+import { Box, Grid, List, Typography } from '@mui/material';
 import { useLayoutEffect } from 'react';
 import { useParams } from 'react-router';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -29,6 +29,17 @@ export const Ballot = () => {
     <Box>
       <Typography variant='h5'>{activeQuestion.label}</Typography>
       <InstaBallotDivider />
+      <Grid container justifyContent='space-between' alignItems='center'>
+        <Grid item>
+          <em>expires</em>
+        </Grid>
+        <Grid item>
+          <em>votes</em>
+        </Grid>
+        <Grid item>
+          <em>share</em>
+        </Grid>
+      </Grid>
       <InstaBallotDivider />
       <List>
         {activeQuestion.answers.map((answer) => (

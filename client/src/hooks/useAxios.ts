@@ -3,7 +3,9 @@ import { useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
 import { networkState } from '../state/apiState';
+import { fingerprintState } from '../state/fingerprintState';
 import { ApiQuery } from '../types/apiTypes';
+import { getFingerprint } from '../utils/getFingerprint';
 
 export const useAxios = (): (<T, R>({
   action,
@@ -12,6 +14,7 @@ export const useAxios = (): (<T, R>({
 }: ApiQuery<T>) => Promise<R | undefined>) => {
   const baseUrl = import.meta.env.VITE_SERVER_URL || '';
   const setNetworkState = useSetRecoilState(networkState);
+  const setFingerprintState = useSetRecoilState(fingerprintState);
 
   const client = async <T, R>({ action, endpoint, payload }: ApiQuery<T>) => {
     const headers = {};
@@ -44,6 +47,9 @@ export const useAxios = (): (<T, R>({
     }
 
     setNetworkState('idle');
+
+    const fingerprint = getFingerprint();
+    if (fingerprint) setFingerprintState(fingerprint);
 
     if (result?.data) return result.data as R;
     return undefined;
