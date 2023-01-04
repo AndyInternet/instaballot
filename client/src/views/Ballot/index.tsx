@@ -51,6 +51,8 @@ export const Ballot = () => {
             );
             if (index >= 0) {
               updatedQuestions[index] = result;
+            } else {
+              updatedQuestions.push(result);
             }
             return updatedQuestions;
           });
