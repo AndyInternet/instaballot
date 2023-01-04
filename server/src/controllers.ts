@@ -24,7 +24,12 @@ export const index = async (req: Request<EmptyRequest>, res: Response) => {
   const { fingerprint } = req;
 
   try {
-    const questions = await Question.find({ access: fingerprint });
+    const questions = await Question.find({
+      access: fingerprint,
+      expiresAt: {
+        $gte: new Date(),
+      },
+    });
     return res.json(questions);
   } catch (error) {
     console.error(error);
@@ -42,7 +47,12 @@ export const readQuestion = async (req: Request<EmptyRequest>, res: Response) =>
   const { fingerprint } = req;
   const { id } = req.params;
   try {
-    const question = await Question.findById(id);
+    const question = await Question.findOne({
+      _id: id,
+      expiresAt: {
+        $gte: new Date(),
+      },
+    });
     if (question) {
       if (fingerprint) question.access.push(fingerprint);
       await question.save();

@@ -24,6 +24,7 @@ import { getFingerprint } from '../../utils/getFingerprint';
 import { VoteButton } from './VoteButton';
 import { Share as ShareIcon } from '@mui/icons-material';
 import { useShare } from '../../hooks/useShare';
+import { networkState } from '../../state/apiState';
 
 export const Ballot = () => {
   const { id } = useParams();
@@ -31,6 +32,7 @@ export const Ballot = () => {
   const share = useShare();
   const setQuestions = useSetRecoilState(questionsState);
   const setActiveQuestionId = useSetRecoilState(activeQuestionIdState);
+  const network = useRecoilValue(networkState);
   const activeQuestion = useRecoilValue(selectActiveQuestion);
   const fingerprint = getFingerprint();
   const activeVote =
@@ -66,41 +68,51 @@ export const Ballot = () => {
     if (id) setActiveQuestionId(id);
   }, [id, setActiveQuestionId]);
 
-  if (!activeQuestion) return null;
-
   return (
-    <Box>
-      <Typography variant='h5'>{activeQuestion.label}</Typography>
-      <InstaBallotDivider />
-      <Grid container justifyContent='space-between' alignItems='center'>
-        <Grid item>
-          <Typography variant='subtitle2'>
-            Expires {dayjs(activeQuestion.expiresAt).fromNow()}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Chip
-            variant='outlined'
-            color='primary'
-            avatar={<Avatar>{activeQuestion.votes.length}</Avatar>}
-            label='Votes'
-          />
-          <IconButton onClick={() => share(activeQuestion.label)}>
-            <ShareIcon color='primary' />
-          </IconButton>
-        </Grid>
-      </Grid>
-      <InstaBallotDivider />
-      <List>
-        {activeQuestion.answers.map((answer) => (
-          <VoteButton
-            answer={answer}
-            activeVote={activeVote}
-            votes={activeQuestion.votes}
-            key={answer._id}
-          />
-        ))}
-      </List>
-    </Box>
+    <>
+      {activeQuestion ? (
+        <Box>
+          <Typography variant='h5'>{activeQuestion.label}</Typography>
+          <InstaBallotDivider />
+          <Grid container justifyContent='space-between' alignItems='center'>
+            <Grid item>
+              <Typography variant='subtitle2'>
+                Expires {dayjs(activeQuestion.expiresAt).fromNow()}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Chip
+                variant='outlined'
+                color='primary'
+                avatar={<Avatar>{activeQuestion.votes.length}</Avatar>}
+                label='Votes'
+              />
+              <IconButton onClick={() => share(activeQuestion.label)}>
+                <ShareIcon color='primary' />
+              </IconButton>
+            </Grid>
+          </Grid>
+          <InstaBallotDivider />
+          <List>
+            {activeQuestion.answers.map((answer) => (
+              <VoteButton
+                answer={answer}
+                activeVote={activeVote}
+                votes={activeQuestion.votes}
+                key={answer._id}
+              />
+            ))}
+          </List>
+        </Box>
+      ) : (
+        <>
+          {network === 'active' ? (
+            <Typography>Loading...</Typography>
+          ) : (
+            <Typography>Invalid Link</Typography>
+          )}
+        </>
+      )}
+    </>
   );
 };
