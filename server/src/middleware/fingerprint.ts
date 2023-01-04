@@ -7,7 +7,7 @@ export const fingerprint = async (req: Request, res: Response, next: NextFunctio
   const domain = process.env.CLIENT_HOSTNAME;
   let fingerprint = req.cookies?.fingerprint;
   if (!fingerprint) fingerprint = v4();
-  res.cookie('fingerprint', fingerprint, { domain: domain, secure: true, expires: dayjs().add(1, 'year').toDate() });
+  res.cookie('fingerprint', fingerprint, { domain: domain, secure: false, expires: dayjs().add(1, 'year').toDate() });
   req.fingerprint = fingerprint;
   next();
 };
