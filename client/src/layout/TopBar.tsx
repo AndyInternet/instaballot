@@ -3,7 +3,7 @@ import {
   CheckCircleOutline as CheckCircleOutlineIcon,
   ContentCopy as ContentCopyIcon,
   HelpOutline as HelpOutlineIcon,
-  Settings as SettingsIcon,
+  MoreVert as MoreVertIcon,
 } from '@mui/icons-material';
 import {
   ButtonGroup,
@@ -22,7 +22,7 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { InstaBallotDivider } from '../components/InstaBallotDivider';
@@ -36,10 +36,11 @@ import {
 
 export const TopBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
   const isMobile = useRecoilValue(isMobileState);
   const fingerprint = useRecoilValue(fingerprintState);
   const [uiTheme, setUiTheme] = useRecoilState(uiThemeState);
-  const uiThemeSelected = useRecoilValue(uiThemeSelectedState);
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -88,36 +89,21 @@ export const TopBar = () => {
                       <Button
                         onClick={() => navigate('/')}
                         startIcon={<CheckCircleOutlineIcon />}
-                        sx={{
-                          color:
-                            uiThemeSelected === 'dark'
-                              ? constants.colors.primary
-                              : '#fff',
-                        }}
+                        sx={{ color: '#fff' }}
                       >
                         Ballots
                       </Button>
                       <Button
                         onClick={() => navigate('/new')}
                         startIcon={<AddCircleOutlineIcon />}
-                        sx={{
-                          color:
-                            uiThemeSelected === 'dark'
-                              ? constants.colors.primary
-                              : '#fff',
-                        }}
+                        sx={{ color: '#fff' }}
                       >
                         New
                       </Button>
                       <Button
                         onClick={() => navigate('/help')}
                         startIcon={<HelpOutlineIcon />}
-                        sx={{
-                          color:
-                            uiThemeSelected === 'dark'
-                              ? constants.colors.primary
-                              : '#fff',
-                        }}
+                        sx={{ color: '#fff' }}
                       >
                         Help
                       </Button>
@@ -126,12 +112,9 @@ export const TopBar = () => {
                 )}
                 <Grid item>
                   <IconButton onClick={handleClick}>
-                    <SettingsIcon
+                    <MoreVertIcon
                       sx={{
-                        color:
-                          uiThemeSelected === 'dark'
-                            ? constants.colors.primary
-                            : '#fff',
+                        color: '#fff',
                       }}
                     />
                   </IconButton>
