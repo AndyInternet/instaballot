@@ -27,6 +27,7 @@ export const VoteButton = ({ activeVote, answer, votes }: Props) => {
   const client = useAxios();
   const activeQuestionId = useRecoilValue(activeQuestionIdState);
   const setQuestions = useSetRecoilState(questionsState);
+  const [loading, setLoading] = useState(false);
   const [percentage, setPercentage] = useState(
     getVotePercentage(votes, answer._id),
   );
@@ -36,6 +37,7 @@ export const VoteButton = ({ activeVote, answer, votes }: Props) => {
   }, [votes]);
 
   const handleVote = async () => {
+    setLoading(true);
     if (!activeQuestionId) {
       toast('ballot id invalid', { type: 'error' });
       return;
@@ -62,6 +64,7 @@ export const VoteButton = ({ activeVote, answer, votes }: Props) => {
         return updatedQuestions;
       });
     }
+    setLoading(false);
   };
 
   return (
@@ -89,7 +92,7 @@ export const VoteButton = ({ activeVote, answer, votes }: Props) => {
             alignItems: 'center',
           }}
         >
-          <CircularProgressWithLabel value={percentage} />
+          <CircularProgressWithLabel value={percentage} loading={loading} />
         </Box>
       </ListItemText>
     </ListItemButton>

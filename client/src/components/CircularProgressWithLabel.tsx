@@ -4,12 +4,19 @@ import CircularProgress, {
 } from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 
-export const CircularProgressWithLabel = (
-  props: CircularProgressProps & { value: number },
-) => {
+interface Props extends CircularProgressProps {
+  value: number;
+  loading?: boolean;
+}
+
+export const CircularProgressWithLabel = (props: Props) => {
+  const { value, loading } = props;
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant='determinate' {...props} />
+      <CircularProgress
+        variant={loading ? 'indeterminate' : 'determinate'}
+        {...props}
+      />
       <Box
         sx={{
           top: 0,

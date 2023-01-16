@@ -26,13 +26,8 @@ import { useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { InstaBallotDivider } from '../components/InstaBallotDivider';
-import { constants } from '../constants';
 import { fingerprintState } from '../state/fingerprintState';
-import {
-  isMobileState,
-  uiThemeSelectedState,
-  uiThemeState,
-} from '../state/uiState';
+import { isMobileState, uiThemeState } from '../state/uiState';
 
 export const TopBar = () => {
   const navigate = useNavigate();
