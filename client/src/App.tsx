@@ -14,8 +14,8 @@ import { NoMatch } from './views/NoMatch';
 export const App = () => {
   return (
     <Router>
-      <Helpers />
       <ThemeManager>
+        <Helpers />
         <Container
           maxWidth='md'
           sx={{ paddingTop: '80px', paddingBottom: '80px' }}
