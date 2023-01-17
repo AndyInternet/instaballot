@@ -1,8 +1,11 @@
 import {
+  Avatar,
   Box,
   Card,
   CardActionArea,
   CardContent,
+  Chip,
+  Grid,
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
@@ -26,20 +29,22 @@ export const BallotCard = ({ question }: Props) => {
           <Typography variant='h5' component='div'>
             {question.label}
           </Typography>
-          {question.answers.map((answer) => (
-            <Typography variant='body2' key={answer._id}>
-              {answer.label}
-            </Typography>
-          ))}
           <InstaBallotDivider />
-          <Box display='flex' justifyContent='space-between'>
-            <Typography variant='subtitle2' sx={{ textAlign: 'right' }}>
-              Created {dayjs(question.createdAt).fromNow()}
-            </Typography>
-            <Typography variant='subtitle2' sx={{ textAlign: 'right' }}>
-              Expires {dayjs(question.expiresAt).fromNow()}
-            </Typography>
-          </Box>
+          <Grid container justifyContent='space-between' alignItems='center'>
+            <Grid item>
+              <Typography variant='subtitle2'>
+                Expires {dayjs(question.expiresAt).fromNow()}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Chip
+                variant='outlined'
+                color='primary'
+                avatar={<Avatar>{question.votes.length}</Avatar>}
+                label='Votes'
+              />
+            </Grid>
+          </Grid>
         </CardContent>
       </CardActionArea>
     </Card>
