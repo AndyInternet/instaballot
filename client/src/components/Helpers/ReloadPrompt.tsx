@@ -45,7 +45,7 @@ export const ReloadPrompt = () => {
       <DialogContent>
         <DialogContentText id='reload-description'>
           <Typography>
-            New content available, click on reload button to update.
+            New version available, click on reload button to update.
           </Typography>
         </DialogContentText>
       </DialogContent>
