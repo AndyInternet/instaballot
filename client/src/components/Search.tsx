@@ -1,5 +1,5 @@
-import { IconButton, InputAdornment, TextField } from '@mui/material';
 import { Clear as ClearIcon, Search as SearchIcon } from '@mui/icons-material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 
 interface Props {
   search: string;
