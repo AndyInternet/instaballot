@@ -23,8 +23,6 @@ export const Ballots = () => {
 
   return (
     <Box>
-      <Search search={search} setSearch={setSearch} fullWidth />
-      <InstaBallotDivider />
       <>
         {questions.length === 0 ? (
           <>
@@ -36,6 +34,8 @@ export const Ballots = () => {
           </>
         ) : (
           <>
+            <Search search={search} setSearch={setSearch} fullWidth />
+            <InstaBallotDivider />
             {sortedQuestions
               .filter((question) => {
                 if (search.length === 0) return true;
