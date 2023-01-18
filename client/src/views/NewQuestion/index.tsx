@@ -96,7 +96,7 @@ export const NewQuestion = () => {
     if (result) {
       setQuestions([...questions, result]);
       setActiveQuestionId(result._id ?? null);
-      navigate('/');
+      navigate(result._id ? `/ballot/${result._id}` : '/');
     }
   };
 
