@@ -41,9 +41,12 @@ export const FingerprintControl = () => {
           });
         } else {
           setFingerprint(editFingerprint);
-          toast('Fingerprint updated', {
+          toast('Fingerprint updated. App will reload in 5 seconds', {
             type: 'success',
           });
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000);
         }
       }
     }
