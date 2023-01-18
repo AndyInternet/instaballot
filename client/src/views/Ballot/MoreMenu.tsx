@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { removeQuestion } from '../../api';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import { useAxios } from '../../hooks/useAxios';
