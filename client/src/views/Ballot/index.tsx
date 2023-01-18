@@ -24,6 +24,7 @@ import {
   selectActiveQuestion,
 } from '../../state/questionState';
 import { EmptyRequest, QuestionResponse } from '../../types/apiTypes';
+import { MoreMenu } from './MoreMenu';
 import { VoteButton } from './VoteButton';
 
 export const Ballot = () => {
@@ -71,39 +72,42 @@ export const Ballot = () => {
   return (
     <>
       {activeQuestion ? (
-        <Box>
-          <Typography variant='h5'>{activeQuestion.label}</Typography>
-          <InstaBallotDivider />
-          <Grid container justifyContent='space-between' alignItems='center'>
-            <Grid item>
-              <Typography variant='subtitle2'>
-                Expires {dayjs(activeQuestion.expiresAt).fromNow()}
-              </Typography>
+        <>
+          <Box>
+            <Typography variant='h5'>{activeQuestion.label}</Typography>
+            <InstaBallotDivider />
+            <Grid container justifyContent='space-between' alignItems='center'>
+              <Grid item>
+                <Typography variant='subtitle2'>
+                  Expires {dayjs(activeQuestion.expiresAt).fromNow()}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Chip
+                  variant='outlined'
+                  color='primary'
+                  avatar={<Avatar>{activeQuestion.votes.length}</Avatar>}
+                  label='Votes'
+                />
+                <IconButton onClick={() => share(activeQuestion.label)}>
+                  <ShareIcon color='primary' />
+                </IconButton>
+                <MoreMenu />
+              </Grid>
             </Grid>
-            <Grid item>
-              <Chip
-                variant='outlined'
-                color='primary'
-                avatar={<Avatar>{activeQuestion.votes.length}</Avatar>}
-                label='Votes'
-              />
-              <IconButton onClick={() => share(activeQuestion.label)}>
-                <ShareIcon color='primary' />
-              </IconButton>
-            </Grid>
-          </Grid>
-          <InstaBallotDivider />
-          <List>
-            {activeQuestion.answers.map((answer) => (
-              <VoteButton
-                answer={answer}
-                activeVote={activeVote}
-                votes={activeQuestion.votes}
-                key={answer._id}
-              />
-            ))}
-          </List>
-        </Box>
+            <InstaBallotDivider />
+            <List>
+              {activeQuestion.answers.map((answer) => (
+                <VoteButton
+                  answer={answer}
+                  activeVote={activeVote}
+                  votes={activeQuestion.votes}
+                  key={answer._id}
+                />
+              ))}
+            </List>
+          </Box>
+        </>
       ) : (
         <>
           {network === 'active' ? (

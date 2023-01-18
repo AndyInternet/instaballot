@@ -1,7 +1,7 @@
 require('dotenv').config();
 require('pretty-error').start();
 import { HttpError } from 'http-errors';
-import { createQuestion, index, readQuestion, socketConnection, vote } from './controllers';
+import { createQuestion, index, readQuestion, removeQuestion, socketConnection, vote } from './controllers';
 import { init } from './init';
 import { validate } from './middleware/validate';
 import { CreateQuestionRequest, CustomRequest as Request, CustomResponse as Response, VoteRequest } from './types';
@@ -29,6 +29,9 @@ app.post('/question', validate<CreateQuestionRequest>(createQuestionRequestSchem
 
 // vote
 app.post('/vote', validate<VoteRequest>(voteRequestSchema), vote);
+
+// remove self
+app.delete('/question/:id', removeQuestion);
 
 // catch 404
 app.use(function (req: Request, res: Response) {

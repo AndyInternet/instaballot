@@ -10,6 +10,10 @@ export type NetworkState = 'idle' | 'active';
 
 export type EmptyRequest = undefined;
 
+export interface IdResponse {
+  id: number;
+}
+
 export type QuestionsResponse = Question[];
 
 export type QuestionResponse = Question;

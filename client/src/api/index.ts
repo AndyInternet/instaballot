@@ -17,6 +17,13 @@ export const readQuestion = (id: string): ApiQuery<EmptyRequest> => {
   };
 };
 
+export const removeQuestion = (id: string): ApiQuery<EmptyRequest> => {
+  return {
+    action: 'DELETE',
+    endpoint: `/question/${id}`,
+  };
+};
+
 export const createQuestionRequest = (
   payload: CreateQuestionRequest,
 ): ApiQuery<CreateQuestionRequest> => {

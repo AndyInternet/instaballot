@@ -94,6 +94,36 @@ export const createQuestion = async (req: Request<CreateQuestionRequest>, res: R
 };
 
 /**
+ * removeQuestion
+ *
+ * @param req
+ * @param res
+ * @returns
+ */
+export const removeQuestion = async (req: Request<EmptyRequest>, res: Response) => {
+  const { fingerprint } = req;
+  const { id } = req.params;
+  try {
+    const question = await Question.findOne({
+      _id: id,
+      access: fingerprint,
+      expiresAt: {
+        $gte: new Date(),
+      },
+    });
+    if (question) {
+      if (fingerprint) {
+        question.access = question.access.filter((fp) => fp !== fingerprint);
+      }
+      await question.save();
+    }
+    return res.json({ id: id });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+/**
  * vote
  *
  * @param req
