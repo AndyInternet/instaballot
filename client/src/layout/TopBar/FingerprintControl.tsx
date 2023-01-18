@@ -12,11 +12,13 @@ import {
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 import { fingerprintState } from '../../state/fingerprintState';
 
 export const FingerprintControl = () => {
+  const navigate = useNavigate();
   const [fingerprint, setFingerprint] = useRecoilState(fingerprintState);
   const [isLocked, setIsLocked] = useState(true);
   const [editFingerprint, setEditFingerprint] = useState(fingerprint);
@@ -44,6 +46,7 @@ export const FingerprintControl = () => {
           toast('Fingerprint updated. App will reload in 5 seconds', {
             type: 'success',
           });
+          navigate('/');
           setTimeout(() => {
             window.location.reload();
           }, 5000);
