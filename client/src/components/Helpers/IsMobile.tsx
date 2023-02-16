@@ -12,9 +12,5 @@ export const IsMobile = () => {
     if (isMobile !== checkIsMobile) setIsMobile(checkIsMobile);
   }, [checkIsMobile, isMobile]);
 
-  useEffect(() => {
-    if (isMobile) setQrCodeEnabled(false);
-  });
-
   return null;
 };

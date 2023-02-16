@@ -23,7 +23,11 @@ import {
   questionsState,
   selectActiveQuestion,
 } from '../../state/questionState';
-import { uiQrCodeSizeState, uiQrCodeState } from '../../state/uiState';
+import {
+  isMobileState,
+  uiQrCodeSizeState,
+  uiQrCodeState,
+} from '../../state/uiState';
 import { EmptyRequest, QuestionResponse } from '../../types/apiTypes';
 import { MoreMenu } from './MoreMenu';
 import { QrCode } from './QrCode';
@@ -33,6 +37,7 @@ export const Ballot = () => {
   const { id } = useParams();
   const client = useAxios();
   const share = useShare();
+  const isMobile = useRecoilValue(isMobileState);
   const setQuestions = useSetRecoilState(questionsState);
   const setActiveQuestionId = useSetRecoilState(activeQuestionIdState);
   const qrCodeEnabled = useRecoilValue(uiQrCodeState);
@@ -111,7 +116,7 @@ export const Ballot = () => {
                   />
                 ))}
               </List>
-              {qrCodeEnabled && (
+              {!isMobile && qrCodeEnabled && (
                 <>
                   <Box sx={{ marginLeft: '16px' }} />
                   <Box sx={{ minWidth: `${qrCodeSize}px` }}>

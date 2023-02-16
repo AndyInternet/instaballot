@@ -22,28 +22,32 @@ export const QrCodeControl = () => {
       <Typography variant='h5' sx={{ marginBottom: '16px' }}>
         QR Code
       </Typography>
-      <Switch
-        checked={qrCodeEnabled}
-        onChange={() => setQrCodeEnabled(!qrCodeEnabled)}
-        disabled={isMobile}
-      />
-      {isMobile && <FormHelperText>Not available on mobile</FormHelperText>}
-      {qrCodeEnabled && (
+      {isMobile ? (
+        <FormHelperText>Not available on mobile</FormHelperText>
+      ) : (
         <>
-          <Typography variant='subtitle1' sx={{ marginTop: '8px' }}>
-            Size
-          </Typography>
-          <Box sx={{ padding: '0 16px' }}>
-            <Slider
-              value={qrCodeSize}
-              onChange={handleSizeChange}
-              valueLabelDisplay='auto'
-              step={32}
-              marks
-              min={64}
-              max={512}
-            />
-          </Box>
+          <Switch
+            checked={qrCodeEnabled}
+            onChange={() => setQrCodeEnabled(!qrCodeEnabled)}
+          />
+          {qrCodeEnabled && (
+            <>
+              <Typography variant='subtitle1' sx={{ marginTop: '8px' }}>
+                Size
+              </Typography>
+              <Box sx={{ padding: '0 16px' }}>
+                <Slider
+                  value={qrCodeSize}
+                  onChange={handleSizeChange}
+                  valueLabelDisplay='auto'
+                  step={32}
+                  marks
+                  min={64}
+                  max={512}
+                />
+              </Box>
+            </>
+          )}
         </>
       )}
     </>
