@@ -101,7 +101,7 @@ export const Ballot = () => {
             </Grid>
             <InstaBallotDivider />
             <Box display='flex' justifyContent='space-between'>
-              <List>
+              <List sx={{ flex: 1 }}>
                 {activeQuestion.answers.map((answer) => (
                   <VoteButton
                     answer={answer}
