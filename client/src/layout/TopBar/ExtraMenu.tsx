@@ -2,6 +2,7 @@ import { Popover } from '@mui/material';
 import Box from '@mui/material/Box';
 import { InstaBallotDivider } from '../../components/InstaBallotDivider';
 import { FingerprintControl } from './FingerprintControl';
+import { QrCodeControl } from './QrCodeControl';
 import { ThemeControl } from './ThemeControl';
 
 interface Props {
@@ -32,6 +33,8 @@ export const ExtraMenu = ({ anchorEl, setAnchorEl }: Props) => {
         <FingerprintControl />
         <InstaBallotDivider />
         <ThemeControl />
+        <InstaBallotDivider />
+        <QrCodeControl />
       </Box>
     </Popover>
   );

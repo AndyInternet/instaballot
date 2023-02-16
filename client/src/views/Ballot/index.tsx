@@ -23,8 +23,10 @@ import {
   questionsState,
   selectActiveQuestion,
 } from '../../state/questionState';
+import { uiQrCodeSizeState, uiQrCodeState } from '../../state/uiState';
 import { EmptyRequest, QuestionResponse } from '../../types/apiTypes';
 import { MoreMenu } from './MoreMenu';
+import { QrCode } from './QrCode';
 import { VoteButton } from './VoteButton';
 
 export const Ballot = () => {
@@ -33,6 +35,8 @@ export const Ballot = () => {
   const share = useShare();
   const setQuestions = useSetRecoilState(questionsState);
   const setActiveQuestionId = useSetRecoilState(activeQuestionIdState);
+  const qrCodeEnabled = useRecoilValue(uiQrCodeState);
+  const qrCodeSize = useRecoilValue(uiQrCodeSizeState);
   const network = useRecoilValue(networkState);
   const activeQuestion = useRecoilValue(selectActiveQuestion);
   const fingerprint = useRecoilValue(fingerprintState);
@@ -96,16 +100,26 @@ export const Ballot = () => {
               </Grid>
             </Grid>
             <InstaBallotDivider />
-            <List>
-              {activeQuestion.answers.map((answer) => (
-                <VoteButton
-                  answer={answer}
-                  activeVote={activeVote}
-                  votes={activeQuestion.votes}
-                  key={answer._id}
-                />
-              ))}
-            </List>
+            <Box display='flex' justifyContent='space-between'>
+              <List>
+                {activeQuestion.answers.map((answer) => (
+                  <VoteButton
+                    answer={answer}
+                    activeVote={activeVote}
+                    votes={activeQuestion.votes}
+                    key={answer._id}
+                  />
+                ))}
+              </List>
+              {qrCodeEnabled && (
+                <>
+                  <Box sx={{ marginLeft: '16px' }} />
+                  <Box sx={{ minWidth: `${qrCodeSize}px` }}>
+                    <QrCode />
+                  </Box>
+                </>
+              )}
+            </Box>
           </Box>
         </>
       ) : (

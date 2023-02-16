@@ -13,10 +13,10 @@ import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import { isMobileState } from '../../state/uiState';
 import { ExtraMenu } from './ExtraMenu';
+import { Logo } from './Logo';
 import { MainMenu } from './MainMenu';
 
 export const TopBar = () => {
-  const navigate = useNavigate();
   const isMobile = useRecoilValue(isMobileState);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleExtraMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,25 +29,7 @@ export const TopBar = () => {
         <Toolbar disableGutters>
           <Grid container justifyContent='space-between' alignItems='center'>
             <Grid item>
-              <Box
-                display='flex'
-                alignItems='center'
-                onClick={() => navigate('/')}
-                sx={{ cursor: 'pointer' }}
-              >
-                <CheckCircleOutlineIcon />
-                <Typography
-                  variant='h6'
-                  noWrap
-                  sx={{
-                    fontWeight: 700,
-                    fontStyle: 'italic',
-                    padding: '4px 8px',
-                  }}
-                >
-                  instaballot
-                </Typography>
-              </Box>
+              <Logo />
             </Grid>
             <Grid item>
               <Grid container alignItems='center'>
