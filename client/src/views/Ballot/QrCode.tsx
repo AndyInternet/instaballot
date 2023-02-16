@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import { useEffect, useRef } from 'react';
 import QRCode from 'react-qr-code';
 import { useRecoilValue } from 'recoil';
 import {

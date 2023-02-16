@@ -1,15 +1,9 @@
-import {
-  CheckCircleOutline as CheckCircleOutlineIcon,
-  MoreVert as MoreVertIcon,
-} from '@mui/icons-material';
+import { MoreVert as MoreVertIcon } from '@mui/icons-material';
 import { Grid, IconButton } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import { isMobileState } from '../../state/uiState';
 import { ExtraMenu } from './ExtraMenu';
