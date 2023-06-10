@@ -47,7 +47,8 @@ export const Ballots = () => {
                   src={BallotBox}
                   style={{
                     color: '#fff',
-                    filter: 'invert(48%) ',
+                    filter: 'invert(50%)',
+                    width: '128px',
                   }}
                 />
                 <Typography
