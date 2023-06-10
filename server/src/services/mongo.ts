@@ -8,8 +8,6 @@ export const connectMongo = () => {
     maxPoolSize: 10,
     socketTimeoutMS: 45000,
     serverSelectionTimeoutMS: 5000,
-    keepAlive: true,
-    keepAliveInitialDelay: 300000,
   };
 
   mongoose
