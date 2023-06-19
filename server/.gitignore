@@ -140,3 +140,4 @@ dist
 build/
 
 .DS_Store
+ecosystem.config.js
