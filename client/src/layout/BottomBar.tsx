@@ -28,7 +28,9 @@ export default function SimpleBottomNavigation() {
   if (!isMobile) return null;
 
   return (
-    <Box sx={{ width: '100%', position: 'fixed', bottom: 0, left: 0 }}>
+    <Box
+      sx={{ width: '100%', position: 'fixed', bottom: 0, left: 0, zIndex: 10 }}
+    >
       <BottomNavigation
         showLabels
         value={value}
