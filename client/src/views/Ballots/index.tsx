@@ -48,7 +48,7 @@ export const Ballots = () => {
                   style={{
                     color: '#fff',
                     filter: 'invert(50%)',
-                    width: '128px',
+                    width: '32px',
                   }}
                 />
                 <Typography
@@ -60,7 +60,7 @@ export const Ballots = () => {
                 <Button
                   onClick={() => navigate('/new')}
                   color='primary'
-                  variant='contained'
+                  variant='outlined'
                 >
                   New Ballot
                 </Button>
