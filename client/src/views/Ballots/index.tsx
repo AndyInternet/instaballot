@@ -10,6 +10,7 @@ import { questionsState } from '../../state/questionState';
 import { BallotCard } from './BallotCard';
 import BallotBox from '../../assets/ballot-box.svg';
 import { useNavigate } from 'react-router';
+import { Add } from '@mui/icons-material';
 
 dayjs.extend(relativeTime);
 
@@ -60,7 +61,8 @@ export const Ballots = () => {
                 <Button
                   onClick={() => navigate('/new')}
                   color='primary'
-                  variant='outlined'
+                  variant='contained'
+                  startIcon={<Add />}
                 >
                   New Ballot
                 </Button>

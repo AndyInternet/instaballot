@@ -1,0 +1,23 @@
+{
+  "name": "instaballot",
+  "version": "1.0.0",
+  "description": "Anonymous surveys in an instant",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently -n server,client \"cd server; npm run start;\" \"cd client; sleep 4; npm run start;\"",
+    "catchup": "concurrently -n server,client \"cd server; npm install\" \"cd client; npm install;\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndyInternet/instaballot.git"
+  },
+  "author": "Andy Lawrence",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AndyInternet/instaballot/issues"
+  },
+  "homepage": "https://github.com/AndyInternet/instaballot#readme",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
